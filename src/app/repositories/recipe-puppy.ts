@@ -15,8 +15,8 @@ class RecipePuppyRepository {
         return result.data;
 
       throw {
-        httpStatusCode: result.status,
-        message: `Result not found.`
+        httpStatusCode: 404,
+        message: `Result of recipe puppy api not found.`
       }
     })
     .catch((error) => {

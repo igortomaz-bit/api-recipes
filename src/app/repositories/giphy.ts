@@ -19,8 +19,8 @@ class GiphyRepository {
         };
 
       throw {
-        httpStatusCode: result.status,
-        message: `Result not found.`
+        httpStatusCode: 404,
+        message: `Result giphy api not found.`
       }
     })
     .catch((error) => {
