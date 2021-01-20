@@ -36,7 +36,7 @@ $ yarn start
 ```
 5. Feito isso a api já estará pronta para receber as requisições.
 
-Para execução utilizando o docker, são necessários os seguintes passos::
+Para execução utilizando o docker, são necessários os seguintes passos:
 
 1. Baixe o projeto em sua máquina;
 2. Navegue até a pasta *api-recipes*;
