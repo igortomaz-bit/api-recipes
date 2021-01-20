@@ -1,14 +1,16 @@
 import { Request, Response, NextFunction } from 'express';
 import recipesService from '../services/recipes';
+import { Validation } from '../utils/validation';
 
 class RecipesController {
   public async getRecipes(request: Request, response: Response, next: NextFunction) {
     const self = this;
-    const { i } = request.query;
+    const ingredients = request.query.i.toString();
     let recipes: any;
 
     try {
-      recipes = await recipesService.getRecipes(i.toString());
+      Validation.validateIngredientsQuantity(ingredients);
+      recipes = await recipesService.getRecipes(ingredients);
     } catch (error) {
       return next(error)
     }
