@@ -1,0 +1,9 @@
+# Internal folders
+.vscode
+dist
+node_modules
+
+# Internal files
+package-lock.json
+yarn.lock
+yarn-error.log
