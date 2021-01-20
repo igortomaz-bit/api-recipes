@@ -3,8 +3,8 @@ import { GiphyFormattedResponse } from '../interfaces/services/giphy/giphy-forma
 import giphyRepository from '../repositories/giphy';
 
 class GiphyService {
-  public async getGiphy(recipiesName: string[]) {
-    const giphyPromises = this.getGiphyPromises(recipiesName);
+  public async getGiphy(recipesName: string[]) {
+    const giphyPromises = this.getGiphyPromises(recipesName);
     return await this.getGiphyResults(giphyPromises);
   }
 
@@ -14,8 +14,8 @@ class GiphyService {
     });
   }
 
-  private getGiphyPromises(recipiesName: string[]) {
-    return recipiesName.map(recipieName => giphyRepository.getGiphy(recipieName));
+  private getGiphyPromises(recipesName: string[]) {
+    return recipesName.map(recipieName => giphyRepository.getGiphy(recipieName));
   }
 
   private buildGifsObjects(results: GiphyResponse[]): GiphyFormattedResponse[] {
