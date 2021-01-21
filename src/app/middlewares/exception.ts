@@ -1,10 +1,5 @@
 import { Request, Response, NextFunction} from 'express';
-
-interface Exception {
-  code: string;
-  message: string;
-  httpStatusCode?: number;
-}
+import { Exception } from '../interfaces/exception';
 
 class ExceptionMiddleware {
   public catch(error: any, request: Request, response: Response, next: NextFunction) {

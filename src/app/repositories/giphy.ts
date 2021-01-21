@@ -10,7 +10,8 @@ class GiphyRepository {
   }
 
   public async getGiphy(recipeName: string) {
-    return axios.get(`${ this.host}?api_key=${this.apiKey}&q=${recipeName}&limit=5&rating=g`)
+    const encodedRecipeName = recipeName.replace(/ /g, '%20').toLowerCase();
+    return axios.get(`${ this.host}?api_key=${this.apiKey}&q=${encodedRecipeName}&limit=5&rating=g`)
     .then((result) => {
       if (result.status === 200 && result.data && result.data.data)
         return {

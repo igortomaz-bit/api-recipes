@@ -10,6 +10,13 @@ class RecipesService {
     const recipeTitles = this.getRecipesTitle(recipesPuppy);
     const giphies = await giphyService.getGiphy(recipeTitles);
     const recipes = this.includeGifInResult(recipesPuppy, giphies);
+
+    if (!recipes.length)
+      throw {
+        httpStatusCode: 404,
+        message: 'Gifs for these ingredients was not found.'
+      }
+
     return this.formatResponse(ingredientsQuery, recipes)
   }
 
@@ -26,12 +33,12 @@ class RecipesService {
 
   private includeGifInResult(recipes: Recipes[], giphies: GiphyFormattedResponse[]): Recipes[] {
     return recipes.map(recipe => {
-      const { gif } = this.getUsedGIf(giphies, recipe);
+      const result = this.getUsedGIf(giphies, recipe);
 
-      if (gif)
+      if (result)
         return {
           ...recipe,
-          gif
+          gif: result.gif
         };
     }).filter(recipe => recipe);
   }
