@@ -4,7 +4,6 @@ import { Validation } from '../utils/validation';
 
 class RecipesController {
   public async getRecipes(request: Request, response: Response, next: NextFunction) {
-    const self = this;
     const ingredients = request.query.i.toString();
     let recipes: any;
 
