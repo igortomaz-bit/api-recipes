@@ -27,22 +27,25 @@ class Redis {
       return undefined;
     })
     .catch(error => {
-      return undefined;
+      throw error;
     });
 } 
 
 public async saveInCache(key: string, complement: string, content: string) {
   const setAsync = promisify(this.client.set).bind(this.client);
 
-  return setAsync(`${key}${complement}`, content)
+  setAsync(`${key}${complement}`, content, 'EX', Number(process.env.REDIS_EXPIRATION))
     .then((result: string) => {
-      if (result)
-        return JSON.parse(result);
+      if (result === 'OK')
+        return;
 
-      return undefined;
+      throw {
+        httpStatusCode: 500,
+        message: 'Problems while trying to save in Redis.'
+      }
     })
     .catch(error => {
-      return undefined;
+      throw error;
     });
 }
 

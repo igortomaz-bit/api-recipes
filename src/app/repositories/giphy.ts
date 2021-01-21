@@ -13,22 +13,24 @@ class GiphyRepository {
   }
 
   public async getGiphy(recipeName: string) {
-    const result = await redisRepository.getFromCache(this.repositoryKey, recipeName);
+    const encodedRecipeName = recipeName.replace(/ /g, '%20').toLowerCase();
+    const result = await redisRepository.getFromCache(this.repositoryKey, encodedRecipeName);
 
     if (result)
       return result;
 
-    const encodedRecipeName = recipeName.replace(/ /g, '%20').toLowerCase();
     return axios.get(`${ this.host}?api_key=${this.apiKey}&q=${encodedRecipeName}&limit=5&rating=g`)
-    .then(async (result) => {
+    .then((result) => {
       if (result.status === 200 && result.data && result.data.data) {
         const answer = {
           recipeName,
           data: result.data.data
         };
 
-        await redisRepository.saveInCache(this.repositoryKey, recipeName, JSON.stringify(answer))
+        redisRepository.saveInCache(this.repositoryKey, encodedRecipeName, JSON.stringify(answer))
+        return answer;
       }
+
       throw {
         httpStatusCode: 404,
         message: `Result giphy api not found.`
