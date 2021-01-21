@@ -11,7 +11,7 @@ class RecipePuppyRepository {
   public async getRecipePuppy(ingredients: string): Promise<RecipePuppyResponse> {
     return axios.get(`${this.host}${ingredients}`)
     .then((result) => {
-      if (result.status === 200 && result.data)
+      if (result.status === 200 && result.data && Object.keys(result.data).length)
         return result.data;
 
       throw {
