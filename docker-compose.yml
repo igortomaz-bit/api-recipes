@@ -9,6 +9,7 @@ services:
       - '8082:8082'
     environment:
       - PORT=8081
+      - REDIS_ENABLE=true
       - REDIS_HOST=api-recipes-redis
       - REDIS_EXPIRATION=86400
       - GIPHY_API_KEY=
