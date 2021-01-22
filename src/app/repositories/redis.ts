@@ -1,7 +1,8 @@
+/* istanbul ignore file */
 import redis, { RedisClient } from 'redis';
 import { promisify } from 'util';
 
-class Redis {
+class RedisRepository {
   private host: string;
   private port: number;
   private client: RedisClient;
@@ -62,4 +63,4 @@ public async saveInCache(key: string, complement: string, content: string) {
 
 }
 
-export default new Redis();
+export default new RedisRepository();

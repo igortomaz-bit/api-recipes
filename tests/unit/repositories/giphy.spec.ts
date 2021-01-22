@@ -1,6 +1,7 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import giphyRepository from '../../../src/app/repositories/giphy';
+import redisRepository from '../../../src/app/repositories/redis';
 import { firstCase, secondCase } from '../../mocks/repositories/giphy';
 
 describe('Test GiphyRepository', () => {
@@ -26,5 +27,15 @@ describe('Test GiphyRepository', () => {
       done();
     });
  
+  }, 10000);
+
+  it ('Should return a response based on redis response.', (done) => {
+    const redisRepositorySpyOn = jest.spyOn(redisRepository, 'getFromCache');
+    redisRepositorySpyOn.mockResolvedValue(firstCase.dataResult);
+    giphyRepository.getGiphy(firstCase.recipeName)
+    .then(result => {
+      expect(result).toMatchObject(firstCase.dataResult);
+      done();
+    })
   }, 10000);
 })

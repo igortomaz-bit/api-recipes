@@ -6,7 +6,7 @@ export const firstCase = {
 
 export const secondCase = {
   exceptionObject: {
-    httpStatusCode: 404,
+    httpStatusCode: 204,
     message: 'Error: Result of recipe puppy api not found..',
     apiName: 'Recipe Puppy'
   }

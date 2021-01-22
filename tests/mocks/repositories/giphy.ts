@@ -1012,7 +1012,7 @@ export const firstCase = {
 
 export const secondCase = {
   exceptionObject: {
-    httpStatusCode: 404,
+    httpStatusCode: 204,
     message: 'Error: Result giphy api not found..',
     apiName: 'Giphy'
   }
