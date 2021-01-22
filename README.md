@@ -13,6 +13,7 @@ Para o desenvolvimento foram utilizadas as seguintes tecnologias:
 - [Eslint](https://eslint.org/)
 - [Docker](https://www.docker.com/)
 - [Redis](https://redis.io/)
+- [Husky](https://www.npmjs.com/package/husky)
 
 
 # Guia de Execução
