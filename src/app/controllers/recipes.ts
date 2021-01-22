@@ -8,7 +8,7 @@ class RecipesController {
     let recipes: any;
 
     try {
-      Validation.validateIngredientsQuantity(ingredients);
+      Validation.parameters(ingredients);
       recipes = await recipesService.getRecipes(ingredients);
     } catch (error) {
       return next(error)
