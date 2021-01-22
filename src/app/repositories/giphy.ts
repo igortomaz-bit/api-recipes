@@ -32,7 +32,7 @@ class GiphyRepository {
       }
 
       throw {
-        httpStatusCode: 404,
+        httpStatusCode: 204,
         message: `Result giphy api not found.`
       }
     })

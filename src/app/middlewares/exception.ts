@@ -29,6 +29,7 @@ class ExceptionMiddleware {
 
   static getExceptionMessage(httpStatusCode: number = 500) {
     const exceptionMessageObject = {
+      204: 'No content founded.',
       400: 'Client specified an invalid argument, request body or query param.',
       401: 'Request not authenticated due to missing, invalid, or expired credentials.',
       403: 'Client does not have sufficient permissions to perform this action.',
@@ -42,6 +43,7 @@ class ExceptionMiddleware {
 
   static getExceptionCode(httpStatusCode: number = 500) {
     const exceptionCodeObject = {
+      204: 'NO_CONTENT',
       400: 'INVALID_ARGUMENT',
       401: 'BAD_REQUEST',
       403: 'PERMISSION_DENIED',

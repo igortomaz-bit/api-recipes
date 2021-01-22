@@ -25,7 +25,7 @@ class RecipePuppyRepository {
       }
 
       throw {
-        httpStatusCode: 404,
+        httpStatusCode: 204,
         message: `Result of recipe puppy api not found.`
       }
     })
