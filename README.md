@@ -1,6 +1,6 @@
 # Api de receitas
 
-Api desenvolvida Api desenvolvida para obtenção de receitas e seus gifs.
+Api desenvolvida para obtenção de receitas e seus gifs.
 
 
 # Especificações
